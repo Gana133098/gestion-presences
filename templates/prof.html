@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Présences (Prof)</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+<body>
+  <header class="header">
+    <h1>Présences — Prof</h1>
+    <div class="meta">
+      <span id="last-update">Dernière mise à jour: —</span>
+      
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card">
+  <h2>Filtrage</h2>
+
+  <div class="toolbar">
+    <label>
+      Formation :
+      <select id="select-formation">
+        <option value="">-- Choisir --</option>
+      </select>
+    </label>
+
+    <label>
+      Filière :
+      <select id="select-filiere" disabled>
+        <option value="">-- Choisir --</option>
+      </select>
+    </label>
+
+    <label>
+      Groupe :
+      <select id="select-groupe" disabled>
+        <option value="">-- Choisir --</option>
+      </select>
+    </label>
+  </div>
+</section>
+
+
+    <section class="card">
+      <h2>Séance en cours</h2>
+      <div id="seance" class="seance">
+        <div><b>Matière:</b> <span id="seance-matiere">—</span></div>
+        <div><b>Salle:</b> <span id="seance-salle">—</span></div>
+        <div><b>Début:</b> <span id="seance-debut">—</span></div>
+        <div><b>Fin:</b> <span id="seance-fin">—</span></div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Liste des présences</h2>
+
+      <div class="toolbar">
+        <label>
+          Filtrer statut :
+          <select id="filter-statut">
+            <option value="all">Tous</option>
+            <option value="present">Présent</option>
+            <option value="retard">Retard</option>
+            <option value="absent">Absent</option>
+          </select>
+        </label>
+        
+        <button id="btn-export-csv" disabled style="margin-left: auto; padding: 6px 12px; cursor: pointer;">
+          📥 Télécharger CSV
+        </button>
+      </div>
+
+      <table class="table" id="table-presences">
+        <thead>
+          <tr>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Groupe</th>
+            <th>Statut</th>
+            <th>Heure badge</th>
+            <th>Retard (min)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- rempli par JS -->
+        </tbody>
+      </table>
+
+      <p id="empty" class="empty hidden">Aucune présence enregistrée pour le moment.</p>
+      <p id="error" class="error hidden"></p>
+    </section>
+  </main>
+
+  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,4 @@
+flask
+pytz
+gunicorn
+psycopg2-binary
